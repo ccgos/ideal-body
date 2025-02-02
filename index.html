@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Measurement Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Body Measurement Calculator</h1>
+        
+        <form id="measurementForm">
+            <div class="input-group">
+                <label for="unitSystem">Unit System:</label>
+                <select id="unitSystem" required>
+                    <option value="metric">Metric</option>
+                    <option value="imperial">Imperial</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="measurement-section">
+                <div class="section-header">Primary Measurements</div>
+                <div class="input-groups">
+                    <div class="input-group height-input">
+                        <label>Height:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="heightCm" required min="100" max="250" step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="heightFt" min="4" max="8" step="1">
+                                <span class="unit-label">ft</span>
+                            </div>
+                            <div class="input-with-unit">
+                                <input type="number" id="heightIn" min="0" max="11.9" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Weight:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="weightKg" required min="30" max="300" step="0.1">
+                                <span class="unit-label">kg</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="weightLbs" min="66" max="660" step="0.1">
+                                <span class="unit-label">lbs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Neck:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="neckCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="neckIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Waist:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="waistCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="waistIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="measurement-section">
+                <div class="section-header">Body Measurements</div>
+                <div class="input-groups">
+                    <div class="input-group">
+                        <label>Shoulders:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="shouldersCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="shouldersIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Chest:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="chestCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="chestIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Hips:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="hipsCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="hipsIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Biceps:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="bicepsCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="bicepsIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Calves:</label>
+                        <div class="metric-input">
+                            <div class="input-with-unit">
+                                <input type="number" id="calvesCm" required step="0.1">
+                                <span class="unit-label">cm</span>
+                            </div>
+                        </div>
+                        <div class="imperial-input hidden">
+                            <div class="input-with-unit">
+                                <input type="number" id="calvesIn" step="0.1">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>Your Results</h2>
+            <div id="bmiResult"></div>
+            <div id="ratioAnalysis"></div>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html> 

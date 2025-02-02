@@ -1,0 +1,620 @@
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3046c0;
+    --success-color: #2ec4b6;
+    --warning-color: #ff9f1c;
+    --danger-color: #e71d36;
+    --text-primary: #2b2d42;
+    --text-secondary: #6c757d;
+    --background-light: #f8f9fa;
+    --background-main: #ffffff;
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f0f2f5;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--background-main);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2, h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.input-group:hover {
+    box-shadow: var(--shadow-md);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--background-main);
+    color: var(--text-primary);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+#results {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e9ecef;
+    display: none;
+}
+
+#results.visible {
+    display: block;
+}
+
+.measurement-group {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.measurement-group:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.measurement-group p {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.measurement-group ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.measurement-group ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: var(--background-main);
+    border-radius: 6px;
+}
+
+.recommendation-group {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.recommendation-header {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.recommendation-details {
+    padding-left: 1rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.recommendation-details p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.height-input .imperial-input {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.metric-input, .imperial-input {
+    transition: all 0.3s ease;
+}
+
+/* Status colors for measurements */
+.status-good {
+    color: var(--success-color);
+}
+
+.status-warning {
+    color: var(--warning-color);
+}
+
+.status-attention {
+    color: var(--danger-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .input-group {
+        padding: 1rem;
+    }
+
+    button {
+        padding: 0.875rem;
+    }
+}
+
+/* Animation for results */
+#results {
+    opacity: 1;
+    transform: none;
+}
+
+/* Remove browser default spinner from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Add these new styles */
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.input-with-unit input {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+.unit-label {
+    position: absolute;
+    right: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* Update existing styles */
+.imperial-input, .metric-input {
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.height-input .imperial-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Add smooth transition for unit system changes */
+.input-group {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.input-group.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.input-group.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add these new styles for the bouncing arrow */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: bounce 2s infinite;
+    z-index: 100;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+.scroll-indicator.visible {
+    opacity: 1;
+}
+
+/* Update the form layout to use a grid */
+#measurementForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Full-width items */
+#measurementForm .input-group:nth-child(1),
+#measurementForm .input-group:nth-child(2) {
+    grid-column: 1 / -1;
+}
+
+/* Make the calculate button full width */
+#measurementForm button {
+    grid-column: 1 / -1;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+    #measurementForm {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Update input group styles for the new layout */
+.input-group {
+    margin-bottom: 0;
+    background: var(--background-light);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+/* Update height input for the grid layout */
+.height-input .imperial-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+/* Make sure the unit labels stay properly positioned */
+.input-with-unit {
+    position: relative;
+}
+
+.unit-label {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Add some breathing room at the bottom of the form */
+#measurementForm {
+    margin-bottom: 2rem;
+}
+
+/* Update measurement section styling */
+.measurement-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Update the grid layout for input groups */
+.measurement-section .input-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Ensure proper spacing between sections */
+.measurement-section {
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .measurement-section .input-groups {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .height-input .imperial-input {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* Unit and Gender selectors - full width */
+#measurementForm > .input-group:nth-child(-n+2) {
+    margin-bottom: 1.5rem;
+}
+
+/* Input groups within sections */
+.measurement-section .input-group {
+    margin: 0;
+    background: var(--background-main);
+    padding: 1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .measurement-section {
+        padding: 1rem;
+    }
+
+    .measurement-section .input-groups {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .input-group {
+        padding: 0.875rem;
+    }
+
+    button {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 0.875rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .input-with-unit input {
+        font-size: 0.95rem;
+    }
+
+    .unit-label {
+        font-size: 0.85rem;
+    }
+}
+
+/* Update measurement section grid layout */
+.measurement-section .input-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Ensure height input (with ft/in) aligns properly with weight */
+.height-input .imperial-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .measurement-section .input-groups {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .height-input .imperial-input {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* Ensure consistent spacing in input groups */
+.measurement-section .input-group {
+    margin: 0;
+    height: 100%;
+}
+
+/* Ensure metric inputs have consistent width */
+.metric-input {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Center the input fields within their containers */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Update input and select field widths */
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-with-unit input {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+/* Make select elements match the input width */
+select {
+    width: 100%;
+}
+
+/* Update imperial inputs to match width */
+.height-input .imperial-input {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Ensure metric inputs match width */
+.metric-input {
+    width: 100%;
+}
+
+/* Remove the previous max-width constraints */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Ensure all inputs within imperial-input have consistent width */
+.imperial-input .input-with-unit {
+    width: 100%;
+    max-width: none;
+}
+
+/* Container alignment */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+/* Metric input consistency */
+.metric-input {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+} 
