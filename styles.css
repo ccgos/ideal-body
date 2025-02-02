@@ -184,12 +184,19 @@ button:hover {
 
 .height-input .imperial-input {
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
 .metric-input, .imperial-input {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -251,11 +258,13 @@ input[type="number"] {
     align-items: center;
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
 }
 
 .input-with-unit input {
     width: 100%;
     padding-right: 3rem;
+    text-align: right;
 }
 
 .unit-label {
@@ -277,9 +286,8 @@ input[type="number"] {
 .height-input .imperial-input {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
     width: 100%;
-    max-width: 500px;
 }
 
 .hidden {
@@ -579,6 +587,8 @@ select {
 /* Update imperial inputs to match width */
 .height-input .imperial-input {
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -597,10 +607,19 @@ select {
     width: 100%;
 }
 
-/* Ensure all inputs within imperial-input have consistent width */
+/* Remove conflicting width settings */
 .imperial-input .input-with-unit {
     width: 100%;
-    max-width: none;
+}
+
+/* Ensure metric and imperial inputs have consistent styling */
+.metric-input, .imperial-input {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
 }
 
 /* Container alignment */
